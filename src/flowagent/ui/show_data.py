@@ -45,9 +45,14 @@ def show_data_page():
             
         )
     with col2: 
+        # Calculate safe index for selectbox
+        max_index = len(st.session_state.df_workflow_infos.index) - 1
+        safe_index = min(1, max_index) if max_index >= 0 else 0
+        
         st.selectbox(
             "Workflow ID",
-            st.session_state.df_workflow_infos.index, index=1,
+            st.session_state.df_workflow_infos.index, 
+            index=safe_index,
             key="selected_workflow_id"
         )
     
