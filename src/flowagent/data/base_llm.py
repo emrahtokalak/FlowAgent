@@ -3,6 +3,13 @@ import os
 from typing import Dict
 from easonsi.llm.openai_client import OpenAIClient
 
+# Load environment variables from .env file
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass  # python-dotenv not installed
+
 LLM_CFG = {}
 def add_openai_models():
     global LLM_CFG
