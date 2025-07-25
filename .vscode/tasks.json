@@ -1,0 +1,257 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "🌐 Start FlowAgent UI",
+            "type": "shell",
+            "command": "${workspaceFolder}/.venv/bin/python",
+            "args": [
+                "-m",
+                "streamlit",
+                "run",
+                "run_flowagent_ui.py",
+                "--server.address",
+                "0.0.0.0",
+                "--server.port=8502",
+                "--",
+                "--config=default.yaml"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/src"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "new",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "runOptions": {
+                "runOn": "default"
+            },
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "💬 Run FlowAgent CLI",
+            "type": "shell",
+            "command": "${workspaceFolder}/.venv/bin/python",
+            "args": [
+                "run_flowagent_cli.py",
+                "--config=default.yaml",
+                "--exp-version=debug",
+                "--exp-mode=session",
+                "--workflow-type=pdl",
+                "--workflow-id=000",
+                "--user-mode=manual",
+                "--user-llm-name=gemma3:latest",
+                "--user-profile-id=0",
+                "--bot-mode=pdl_bot",
+                "--bot-llm-name=gemma3:latest",
+                "--api-mode=llm",
+                "--api-llm-name=gemma3:latest",
+                "--bot-template-fn=flowagent/bot_pdl.jinja",
+                "--conversation-turn-limit=20",
+                "--log-utterence-time",
+                "--log-to-db"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/src"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "new",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "runOptions": {
+                "runOn": "default"
+            },
+            "isBackground": false,
+            "problemMatcher": []
+        },
+        {
+            "label": "💬 Run FlowAgent CLI (Ollama Llama3.2)",
+            "type": "shell",
+            "command": "${workspaceFolder}/.venv/bin/python",
+            "args": [
+                "run_flowagent_cli.py",
+                "--config=default.yaml",
+                "--exp-version=debug",
+                "--exp-mode=session",
+                "--workflow-type=pdl",
+                "--workflow-id=000",
+                "--user-mode=manual",
+                "--user-llm-name=llama3.2:latest",
+                "--user-profile-id=0",
+                "--bot-mode=pdl_bot",
+                "--bot-llm-name=llama3.2:latest",
+                "--api-mode=llm",
+                "--api-llm-name=llama3.2:latest",
+                "--bot-template-fn=flowagent/bot_pdl.jinja",
+                "--conversation-turn-limit=20",
+                "--log-utterence-time",
+                "--log-to-db"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/src"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "new",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "runOptions": {
+                "runOn": "default"
+            },
+            "isBackground": false,
+            "problemMatcher": []
+        },
+        {
+            "label": "🧪 Run FlowAgent Experiment",
+            "type": "shell",
+            "command": "${workspaceFolder}/.venv/bin/python",
+            "args": [
+                "run_flowagent_exp.py",
+                "--config=default.yaml",
+                "--exp-version=debug",
+                "--workflow-type=pdl",
+                "--user-mode=llm_profile",
+                "--user-llm-name=gpt-4o",
+                "--bot-mode=pdl_bot",
+                "--bot-llm-name=gpt-4o",
+                "--api-mode=llm",
+                "--api-llm-name=gpt-4o",
+                "--user-template-fn=flowagent/user_llm.jinja",
+                "--bot-template-fn=flowagent/bot_pdl.jinja",
+                "--conversation-turn-limit=20",
+                "--log-utterence-time",
+                "--log-to-db"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/src"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "new",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "runOptions": {
+                "runOn": "default"
+            },
+            "isBackground": false,
+            "problemMatcher": []
+        },
+        {
+            "label": "📦 Install Python Dependencies",
+            "type": "shell",
+            "command": "${workspaceFolder}/.venv/bin/pip",
+            "args": [
+                "install",
+                "-r",
+                "requirements.txt"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "runOptions": {
+                "runOn": "default"
+            },
+            "isBackground": false,
+            "problemMatcher": []
+        },
+        {
+            "label": "🦙 Check Ollama Connection",
+            "type": "shell",
+            "command": "curl",
+            "args": [
+                "-s",
+                "http://localhost:11434/api/tags"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "runOptions": {
+                "runOn": "default"
+            },
+            "isBackground": false,
+            "problemMatcher": []
+        },
+        {
+            "label": "🔧 Setup Virtual Environment",
+            "type": "shell",
+            "command": "python3",
+            "args": [
+                "-m",
+                "venv",
+                ".venv"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "runOptions": {
+                "runOn": "default"
+            },
+            "isBackground": false,
+            "problemMatcher": []
+        }
+    ]
+}

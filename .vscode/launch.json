@@ -1,0 +1,145 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "🌐 FlowAgent UI (Streamlit)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/.venv/bin/streamlit",
+            "args": [
+                "run",
+                "${workspaceFolder}/src/run_flowagent_ui.py",
+                "--server.address",
+                "0.0.0.0",
+                "--server.port",
+                "8502",
+                "--",
+                "--config=default.yaml"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/src",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/src"
+            },
+            "presentation": {
+                "hidden": false,
+                "group": "flowagent",
+                "order": 1
+            }
+        },
+        {
+            "name": "💬 FlowAgent CLI (Interactive)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/run_flowagent_cli.py",
+            "args": [
+                "--config=default.yaml",
+                "--exp-version=debug",
+                "--exp-mode=session",
+                "--workflow-type=pdl",
+                "--workflow-id=000",
+                "--user-mode=manual",
+                "--user-llm-name=gemma3:latest",
+                "--user-profile-id=0",
+                "--bot-mode=pdl_bot",
+                "--bot-llm-name=gemma3:latest",
+                "--api-mode=llm",
+                "--api-llm-name=gemma3:latest",
+                "--bot-template-fn=flowagent/bot_pdl.jinja",
+                "--conversation-turn-limit=20",
+                "--log-utterence-time",
+                "--log-to-db"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/src",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/src"
+            },
+            "presentation": {
+                "hidden": false,
+                "group": "flowagent",
+                "order": 2
+            }
+        },
+        {
+            "name": "🧪 FlowAgent Experiment",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/run_flowagent_exp.py",
+            "args": [
+                "--config=default.yaml",
+                "--exp-version=debug",
+                "--workflow-type=pdl",
+                "--user-mode=llm_profile",
+                "--user-llm-name=gpt-4o",
+                "--bot-mode=pdl_bot",
+                "--bot-llm-name=gpt-4o",
+                "--api-mode=llm",
+                "--api-llm-name=gpt-4o",
+                "--user-template-fn=flowagent/user_llm.jinja",
+                "--bot-template-fn=flowagent/bot_pdl.jinja",
+                "--conversation-turn-limit=20",
+                "--log-utterence-time",
+                "--log-to-db"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/src",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/src"
+            },
+            "presentation": {
+                "hidden": false,
+                "group": "flowagent",
+                "order": 3
+            }
+        },
+        {
+            "name": "📊 FlowAgent Evaluation",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/run_flowagent_eval.py",
+            "args": [
+                "--config=default.yaml",
+                "--exp-version=debug",
+                "--workflow-type=pdl",
+                "--user-mode=llm_profile",
+                "--user-llm-name=gpt-4o",
+                "--bot-mode=pdl_bot",
+                "--bot-llm-name=gpt-4o",
+                "--api-mode=llm",
+                "--api-llm-name=gpt-4o",
+                "--user-template-fn=flowagent/user_llm.jinja",
+                "--bot-template-fn=flowagent/bot_pdl.jinja",
+                "--conversation-turn-limit=20",
+                "--log-utterence-time",
+                "--log-to-db"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/src",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/src"
+            },
+            "presentation": {
+                "hidden": false,
+                "group": "flowagent",
+                "order": 4
+            }
+        },
+        {
+            "name": "🔧 FlowAgent Data Check",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/run_flowagent_datacheck.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/src",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/src"
+            },
+            "presentation": {
+                "hidden": false,
+                "group": "flowagent",
+                "order": 5
+            }
+        }
+    ]
+}

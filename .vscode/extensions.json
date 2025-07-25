@@ -1,0 +1,19 @@
+{
+    "recommendations": [
+        "ms-python.python",
+        "ms-python.debugpy",
+        "ms-python.flake8",
+        "ms-python.black-formatter",
+        "ms-toolsai.jupyter",
+        "charliermarsh.ruff",
+        "streetsidesoftware.code-spell-checker",
+        "ms-vscode.vscode-json",
+        "redhat.vscode-yaml",
+        "ms-python.isort",
+        "donjayamanne.python-environment-manager",
+        "njpwerner.autodocstring"
+    ],
+    "unwantedRecommendations": [
+        "ms-python.pylint"
+    ]
+}
